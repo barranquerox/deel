@@ -12,23 +12,23 @@ const TODO_ITEMS = [
 
 test.describe('New Todo', () => {
   test('should allow me to add todo items', async ({ page }) => {
-    // create a new todo locator
+    // create a new locator
     const newTodo = page.getByPlaceholder('What needs to be done?');
 
-    // Create 1st todo.
+    // Create 1st.
     await newTodo.fill(TODO_ITEMS[0]);
     await newTodo.press('Enter');
 
-    // Make sure the list only has one todo item.
+    // Make sure the list only has one item.
     await expect(page.getByTestId('todo-title')).toHaveText([
       TODO_ITEMS[0]
     ]);
 
-    // Create 2nd todo.
+    // Create 2nd.
     await newTodo.fill(TODO_ITEMS[1]);
     await newTodo.press('Enter');
 
-    // Make sure the list now has two todo items.
+    // Make sure the list now has two items.
     await expect(page.getByTestId('todo-title')).toHaveText([
       TODO_ITEMS[0],
       TODO_ITEMS[1]
@@ -38,10 +38,10 @@ test.describe('New Todo', () => {
   });
 
   test('should clear text input field when an item is added', async ({ page }) => {
-    // create a new todo locator
+    // create a new locator
     const newTodo = page.getByPlaceholder('What needs to be done?');
 
-    // Create one todo item.
+    // Create one item.
     await newTodo.fill(TODO_ITEMS[0]);
     await newTodo.press('Enter');
 
@@ -54,7 +54,7 @@ test.describe('New Todo', () => {
     // Create 3 items.
     await createDefaultTodos(page);
 
-    // create a todo count locator
+    // create a count locator
     const todoCount = page.getByTestId('todo-count')
   
     // Check test using different methods.
@@ -104,7 +104,7 @@ test.describe('Mark all as completed', () => {
     await expect(toggleAll).toBeChecked();
     await checkNumberOfCompletedTodosInLocalStorage(page, 3);
 
-    // Uncheck first todo.
+    // Uncheck first.
     const firstTodo = page.getByTestId('todo-item').nth(0);
     await firstTodo.getByRole('checkbox').uncheck();
 
@@ -122,7 +122,7 @@ test.describe('Mark all as completed', () => {
 test.describe('Item', () => {
 
   test('should allow me to mark items as complete', async ({ page }) => {
-    // create a new todo locator
+    // create a new locator
     const newTodo = page.getByPlaceholder('What needs to be done?');
 
     // Create two items.
@@ -147,7 +147,7 @@ test.describe('Item', () => {
   });
 
   test('should allow me to un-mark items as complete', async ({ page }) => {
-    // create a new todo locator
+    // create a new locator
     const newTodo = page.getByPlaceholder('What needs to be done?');
 
     // Create two items.
@@ -258,10 +258,10 @@ test.describe('Editing', () => {
 
 test.describe('Counter', () => {
   test('should display the current number of todo items', async ({ page }) => {
-    // create a new todo locator
+    // create a new locator
     const newTodo = page.getByPlaceholder('What needs to be done?');
     
-    // create a todo count locator
+    // create a count locator
     const todoCount = page.getByTestId('todo-count')
 
     await newTodo.fill(TODO_ITEMS[0]);
@@ -304,7 +304,7 @@ test.describe('Clear completed button', () => {
 
 test.describe('Persistence', () => {
   test('should persist its data', async ({ page }) => {
-    // create a new todo locator
+    // create a new locator
     const newTodo = page.getByPlaceholder('What needs to be done?');
 
     for (const item of TODO_ITEMS.slice(0, 2)) {
@@ -409,7 +409,7 @@ test.describe('Routing', () => {
 });
 
 async function createDefaultTodos(page: Page) {
-  // create a new todo locator
+  // create a new locator
   const newTodo = page.getByPlaceholder('What needs to be done?');
 
   for (const item of TODO_ITEMS) {
