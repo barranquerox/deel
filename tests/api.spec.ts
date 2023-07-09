@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { describe, it, expect } from '@jest/globals';
+import { describe, it } from '@jest/globals';
 import { faker } from '@faker-js/faker';
 
 // Constants
@@ -42,6 +42,8 @@ describe('POST /bm/merchants/register', () => {
                 },
             })
             .expect(201);
+
+        console.log(registerResponse);
     });
 });
 
