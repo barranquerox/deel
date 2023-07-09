@@ -1,0 +1,7 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+jest_html_reporters.html
+jest-html-reporters-attach
+.idea
