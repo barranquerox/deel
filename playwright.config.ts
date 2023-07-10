@@ -22,12 +22,32 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+
+  /* Maximum time one test can run for. */
+  timeout: 90000,
+
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
+    actionTimeout: 20000,
+
+    headless: true,
+
+    /* To avoid HTTPS warning with Firefox security : we ignore HTTPS errors with Web Browser */
+    ignoreHTTPSErrors: true,
+
+    navigationTimeout: 30000,
+
+    screenshot: { fullPage: true, mode: 'on' },
+
+    /* Retain the trace on each failed test. See https://playwright.dev/docs/trace-viewer */
+    trace: 'retain-on-failure',
+
+    video: { mode: 'on', size: { height: 1080, width: 1920 } },
+
+    viewport: { height: 1080, width: 1920 },
   },
 
   /* Configure projects for major browsers */
